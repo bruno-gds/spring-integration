@@ -9,7 +9,8 @@ import org.springframework.messaging.MessageHeaders;
 @MessagingGateway
 public interface EstoquePedidoGateway {
 
-	@Gateway(requestChannel = "estoque", requestTimeout = 5000, headers = @GatewayHeader(name = MessageHeaders.REPLY_CHANNEL,
+	@Gateway(requestChannel = "estoque", requestTimeout = 5000,
+			headers = @GatewayHeader(name = MessageHeaders.REPLY_CHANNEL,
 			expression = "@nullChannel"))
 	void removerEstoque(Message<RemoverEstoqueRequest> removerEstoque);
 }

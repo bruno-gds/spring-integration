@@ -24,7 +24,9 @@ public class PedidoService {
 
 	@Transactional
 	public void save(Pedido pedido) {
-			pedido.getItens().forEach(i -> this.estoquePedidoGateway.removerEstoque(MessageBuilder.withPayload(new RemoverEstoqueRequest(i.getIdProduct(), i.getQuantidade())).build()));
+			pedido.getItens().forEach(i -> this.estoquePedidoGateway.removerEstoque(
+					MessageBuilder.withPayload(new RemoverEstoqueRequest(i.getIdProduct(),
+							i.getQuantidade())).build()));
 			this.pedidoRepository.save(pedido);
 	}
 
